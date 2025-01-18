@@ -20,10 +20,7 @@ const VisitDetails = ({ data }: VisitDetailsProps) => {
     <div>
       <Grid container spacing={4}>
         <Grid size={12}>
-          <TitleValuePair
-            title="Nurse"
-            value={`${data.nurse.name} | ${data.nurse.id}`}
-          />
+          <TitleValuePair title="Nurse" value={data.nurse.name} />
         </Grid>
         <Grid size={2}>
           <TitleValuePair

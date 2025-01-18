@@ -1,5 +1,5 @@
 import { PropsWithChildren } from "react";
-import { CssBaseline, Box, Container } from "@mui/material";
+import { CssBaseline, Box, Container, Typography } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Button from "@mui/material/Button";
@@ -42,14 +42,15 @@ const Layout = ({ children }: PropsWithChildren) => {
                       height={50}
                     />
                   </IconButton>
-                  <FlexBox>
+                  <FlexBox align="center">
+                    <Typography color="secondary">Jenna Rajani</Typography>
                     <Button
                       href="https://jjrajani.github.io/#/home"
                       target="blank"
                       variant="contained"
                       color="secondary"
                       startIcon={<ContactPageIcon />}>
-                      Jenna Rajani
+                      Portfolio
                     </Button>
                     <Button
                       href="https://github.com/jjrajani/float_challenge"
