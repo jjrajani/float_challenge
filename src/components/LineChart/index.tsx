@@ -62,39 +62,44 @@ const LineChart = ({ chartTitle, datasets, options }: LineChartProps) => {
         datasets,
       };
 
+      const _options = merge(
+        {
+          maintainAspectRatio: false,
+          plugins: {
+            title: {
+              display: Boolean(chartTitle),
+              text: chartTitle,
+            },
+            tooltip: {
+              mode: "index",
+              intersect: false,
+              caretSize: 0,
+            },
+          },
+          scales: {
+            x: {
+              type: "timeseries",
+              time: {
+                // Custom formatting for ticks (dates on the x-axis)
+                displayFormats: {
+                  hour: "MMM d",
+                  day: "MMM d", // Example: "Jan 1"
+                  month: "MMM yyyy", // Example: "Jan 2023"
+                },
+                tooltipFormat: "PP", // Example: "Jan 1, 2023"
+              },
+            },
+          },
+        } as ChartOptions,
+        options || {}
+      );
+
+      console.log("%c _options.tooltip", "color: orange", _options.tooltip);
+
       const chart = new Chart(chartCanvas.current, {
         type: "line",
         data,
-        options: merge(
-          {
-            maintainAspectRatio: false,
-            plugins: {
-              title: {
-                display: Boolean(chartTitle),
-                text: chartTitle,
-              },
-              tooltip: {
-                mode: "index",
-                intersect: false,
-              },
-            },
-            scales: {
-              x: {
-                type: "timeseries",
-                time: {
-                  // Custom formatting for ticks (dates on the x-axis)
-                  displayFormats: {
-                    hour: "MMM d",
-                    day: "MMM d", // Example: "Jan 1"
-                    month: "MMM yyyy", // Example: "Jan 2023"
-                  },
-                  tooltipFormat: "PP", // Example: "Jan 1, 2023"
-                },
-              },
-            },
-          } as ChartOptions,
-          options || {}
-        ),
+        options: _options,
       });
 
       return () => {
