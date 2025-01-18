@@ -69,6 +69,8 @@ Updated `next.config.js` to redirect from `/` to `/patients` to mock routing.
 
 - Have a "Meds Changed" alert at the top of the screen, in the visit history section, in the last visit section.
 
+- The "Meds Changed" tootlip section should display what med used to be taken and what med is now being taken.
+
 ---
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
