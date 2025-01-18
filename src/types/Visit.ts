@@ -1,6 +1,6 @@
 import { Medication } from "./Medication";
 import { Nurse } from "./Nurse";
-import { PatientBioData } from "./PatientBioData";
+import { PatientBio } from "./PatientBio";
 
 export interface Visit {
   id: string;
@@ -18,5 +18,5 @@ export interface Visit {
 export interface VisitWithMeta extends Visit {
   nurse: Nurse;
   medication: Medication;
-  bio: PatientBioData;
+  bio: PatientBio;
 }

@@ -1,4 +1,4 @@
-export interface PatientBioData {
+export interface PatientBio {
   id: string;
   heart_rate: number;
   systolic_bp: number; // blood pressure = systolic_bp / diastolic_bp

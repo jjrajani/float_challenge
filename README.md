@@ -42,6 +42,7 @@ Updated `next.config.js` to redirect from `/` to `/patients` to mock routing.
 
 # Enhancements
 
+- Mobile styles / responsiveness
 - Would be nice to be able to filter visits in the Visit History card.
 
 - Might be cool to add an icon to pain level indicating severity. Perhaps an icon for each range, 0-3,4-6,7-10.

@@ -1,5 +1,5 @@
 export interface Nurse {
   name: string;
   id: string;
-  visits: string[]; // ids of PatientVisit
+  visit_ids: string[]; // ids of PatientVisit
 }

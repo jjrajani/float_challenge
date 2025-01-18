@@ -5,7 +5,7 @@ import {
   getFormattedTimeDifference,
 } from "@/utils/date";
 import { symptomsStatusMeta } from "@/constants/symptoms";
-import { getBioBloodPressure } from "@/db/PatientBioDatas";
+import { getBioBloodPressure } from "@/db/PatientBios";
 import TitleValuePair from "@/components/TitleValuePair";
 import { Grid2 as Grid } from "@mui/material";
 import SymptomsStatusDot from "./SymptomsStatusDot";

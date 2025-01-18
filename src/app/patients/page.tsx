@@ -1,5 +1,5 @@
 import AppLayout from "@/components/AppLayout";
-import PatientsPage from "@/components/PatientsPage";
+import PatientsPage from "@/pageComponents/PatientsPage";
 
 export default function Patients() {
   return (

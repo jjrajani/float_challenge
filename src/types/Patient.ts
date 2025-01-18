@@ -6,5 +6,5 @@ export interface Patient {
   id: string;
   gender: "Male" | "Female";
   visit_ids: string[];
-  visits: VisitWithMeta[]; // ids of PatientVisit
+  visits: VisitWithMeta[];
 }
