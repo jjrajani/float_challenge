@@ -7,15 +7,15 @@
 # Intention
 
 **User Persona:**
-I'm a pharmacist or nurse wanting to understand the progress of a specific patient so I can better make decisions about how to continue treatment.
+I'm a pharmacist or nurse wanting to understand the progress of a specific patient so I can make better decisions about how to continue treatment.
 
 **UI Layout:**
-On the left side I've provided a "Patient Selctor" where the user can select a specific patient they want to analyze. A search field is included to make it easier to find a patient.
+On the left side I've provided a "Patient Selector" where the user can select a specific patient they want to analyze. A search field is included to make it easier to find a patient.
 
-On the right side I've built a dashboard of sorts that gives an overview of the patient, details about their last visit, historical bio data charts that include annotations for when meds were changed, and finally a full visit history section. My goal was to make it easy to find a patient and get a quick understanding of how their current med(s) are effecting their vitals and pain levels. I'm hoping the charts help achieve this.
+On the right side I've built a dashboard of sorts that gives an overview of the patient, details about their last visit, historical bio data charts that include annotations for when medications were changed, and finally a full visit history section. My goal was to make it easy to find a patient and get a quick understanding of how their current medications are effecting their vitals and pain levels. I'm hoping the charts help achieve this.
 
 **Expanded Use Cases:**
-This UI could also potentially serve as a way to understand how specific nurses impact the patient. We could add a filter to the top of the page to allow the user to select a nurse then filter all the patient visit data to only show visits by that nurse. Same could apply to meds taken, duration of visit, or perhaps location of visit. Anything that might give more insight into how the patient's environment, treatment plan, and physician impact their ability to heal.
+This UI could also potentially serve as a way to understand how specific medications impact the patient. We could add a filter to the top of the page to allow the user to select a medication then filter all the patient visit data to only show visits including that medication. Same could apply to duration of visit, location of visit, or even perhaps the administrating nurse. Anything that might give more insight into how the patient's environment, treatment plan, and physician impact their ability to heal.
 
 # ChatGPT uses
 
@@ -53,7 +53,7 @@ Updated `next.config.js` to redirect from `/` to `/patients` to mock routing.
 
 # Time Spent
 
-10 hrs
+12 hrs
 
 # Enhancements
 
@@ -73,7 +73,7 @@ Updated `next.config.js` to redirect from `/` to `/patients` to mock routing.
 
 - The "Meds Changed" tootlip section should display what med used to be taken and what med is now being taken.
 
-- Ability for a patient to be taking more than one medicine.
+- Improve medications interface. Ability for a patient to be taking more than one medicine, dosage amt, frequency, refill date...
 
 - Allow pharmacist/patient admin to choose which charts to show in the Bio History section. So they can show the most relevant data for that patient's treatment plan.
 
