@@ -6,6 +6,7 @@ import LastVisitCard from "./LastVisitCard";
 import BioHistoryChartCard from "./BioHistoryChartCard";
 import PatientOverviewCard from "./PatientOverviewCard";
 import PatientVisitHistoryCard from "./PatientVisitHistoryCard";
+import { borderGrey } from "@/theme";
 
 interface PatientDashboardProps {
   patientId?: string;
@@ -30,7 +31,7 @@ const PatientDashboard = ({ patientId }: PatientDashboardProps) => {
               zIndex: 1,
               height: 36,
               backgroundColor: "white",
-              borderBottom: "solid grey 1px",
+              borderBottom: `solid ${borderGrey} 1px`,
             }}>
             {patient?.name}
           </Typography>

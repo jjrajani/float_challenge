@@ -14,7 +14,7 @@ interface ListCardProps {
 
 const ListCard = ({ items }: ListCardProps) => {
   return (
-    <List component={Card}>
+    <List component={Card} elevation={0}>
       {items.map((item) => (
         <ListItemButton
           key={item.id}

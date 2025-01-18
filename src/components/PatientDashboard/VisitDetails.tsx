@@ -1,5 +1,9 @@
 import { VisitWithMeta } from "@/types/Visit";
-import { formatTime, getFormattedTimeDifference } from "@/utils/date";
+import {
+  formatDateIntl,
+  formatTime,
+  getFormattedTimeDifference,
+} from "@/utils/date";
 import { symptomsStatusMeta } from "@/constants/symptoms";
 import { getBioBloodPressure } from "@/db/PatientBioDatas";
 import TitleValuePair from "../TitleValuePair";
@@ -23,9 +27,12 @@ const VisitDetails = ({ data }: VisitDetailsProps) => {
         </Grid>
         <Grid size={2}>
           <TitleValuePair
-            title="Appt. time"
-            value={formatTime(data.time_start)}
+            title="Date"
+            value={formatDateIntl(data.time_start)}
           />
+        </Grid>
+        <Grid size={2}>
+          <TitleValuePair title="Time" value={formatTime(data.time_start)} />
         </Grid>
         <Grid size={2}>
           <TitleValuePair title="Location" value={data.location} />

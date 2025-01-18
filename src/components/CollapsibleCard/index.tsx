@@ -30,8 +30,11 @@ const CollapsibleCard = ({
     setExpanded((prev) => !prev);
   }, []);
   return (
-    <Card>
-      <CardContent>
+    <Card elevation={0}>
+      <CardContent
+        sx={{
+          paddingBottom: expanded ? "" : "16px !important",
+        }}>
         <FlexBox
           fullWidth
           justify="space-between"

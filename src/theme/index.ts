@@ -4,6 +4,7 @@ import { createTheme } from "@mui/material/styles";
 const floatBlue = "rgb(29, 78, 216)";
 const floatBlackText = "rgb(2, 6, 23)";
 const secondaryColor = "rgb(220, 220, 220)";
+export const borderGrey = "rgba(0, 0, 0, 0.23)";
 
 const theme = createTheme({
   palette: {
@@ -40,6 +41,20 @@ const theme = createTheme({
       styleOverrides: {
         primary: {
           fontSize: 14,
+        },
+      },
+    },
+    MuiCard: {
+      styleOverrides: {
+        root: {
+          border: `solid ${borderGrey} 1px`,
+        },
+      },
+    },
+    MuiAppBar: {
+      styleOverrides: {
+        root: {
+          boxShadow: "none",
         },
       },
     },
