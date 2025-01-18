@@ -6,10 +6,10 @@ import {
 } from "@/utils/date";
 import { symptomsStatusMeta } from "@/constants/symptoms";
 import { getBioBloodPressure } from "@/db/PatientBioDatas";
-import TitleValuePair from "../TitleValuePair";
+import TitleValuePair from "@/components/TitleValuePair";
 import { Grid2 as Grid } from "@mui/material";
 import SymptomsStatusDot from "./SymptomsStatusDot";
-import FlexBox from "../FlexBox";
+import FlexBox from "@/components/FlexBox";
 
 interface VisitDetailsProps {
   data: VisitWithMeta;

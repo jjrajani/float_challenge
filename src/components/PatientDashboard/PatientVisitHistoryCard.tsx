@@ -2,7 +2,7 @@ import Accordion from "@/components/Accordion";
 import { useMemo } from "react";
 import VisitDetails from "./VisitDetails";
 import { formatDateIntl } from "@/utils/date";
-import FlexBox from "../FlexBox";
+import FlexBox from "@/components/FlexBox";
 import SymptomsStatusDot from "./SymptomsStatusDot";
 import { Patient } from "@/types/Patient";
 import CollapsibleCard from "@/components/CollapsibleCard";
@@ -23,7 +23,7 @@ const PatientVisitHistoryCard = ({ patient }: PatientVisitHistoryCardProps) => {
       title: `${formatDateIntl(v.time_start)} | Nurse: ${v.nurse.name}`,
       // Content of accordion
       component: VisitDetails,
-      // Data prop for VisitDetails componnt
+      // Data prop for VisitDetails component
       data: v,
       // Right side of Accordion Header custom components
       actions: (

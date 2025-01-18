@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import FlexBox from "../FlexBox";
+import FlexBox from "@/components/FlexBox";
 import { Typography } from "@mui/material";
 
 interface TitleValuePairProps {

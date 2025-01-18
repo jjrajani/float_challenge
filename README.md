@@ -5,6 +5,7 @@ ChatGPT uses
 - Generate date format funcs
 - After creating data structures and mocking data to get UI built, used ChatGPT to help me build a function to generate data. So I can easily have more than 2 or 3 visits for a patient. Specifically the `generateVisits` func in `src/db/Visits`.
 - Generate get patient age func
+- Help pick colors for charts
 
 Libraries
 
@@ -20,7 +21,7 @@ Updated next.config.js to redirect `/` to `/patients` to mock routing.
 
 Time Spent
 8hrs
-10a -
+10a - 10:30a
 
 <!-- This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 

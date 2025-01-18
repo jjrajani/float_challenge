@@ -1,10 +1,10 @@
-import Layout from "@/components/Layout";
+import AppLayout from "@/components/AppLayout";
 import PatientsPage from "@/components/PatientsPage";
 
 export default function Patients() {
   return (
-    <Layout>
+    <AppLayout>
       <PatientsPage />
-    </Layout>
+    </AppLayout>
   );
 }

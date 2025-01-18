@@ -8,7 +8,7 @@ import {
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import { PropsWithChildren, useCallback, useState } from "react";
 import { styled } from "@mui/material/styles";
-import FlexBox from "../FlexBox";
+import FlexBox from "@/components/FlexBox";
 
 interface CollapsibleCardProps extends PropsWithChildren {
   defaultExpanded?: boolean;
@@ -25,10 +25,12 @@ const CollapsibleCard = ({
   title,
 }: CollapsibleCardProps) => {
   const [expanded, setExpanded] = useState(defaultExpanded);
+
   const toggleExpanded = useCallback((e: React.MouseEvent<HTMLElement>) => {
     e.stopPropagation();
     setExpanded((prev) => !prev);
   }, []);
+
   return (
     <Card elevation={0}>
       <CardContent

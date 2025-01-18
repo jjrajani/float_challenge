@@ -1,5 +1,5 @@
-import Layout from "@/components/Layout";
+import AppLayout from "@/components/AppLayout";
 
 export default async function Home() {
-  return <Layout>Landing</Layout>;
+  return <AppLayout>Landing</AppLayout>;
 }

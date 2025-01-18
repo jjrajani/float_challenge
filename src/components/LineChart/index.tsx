@@ -9,8 +9,10 @@ import {
   TimeSeriesScale,
   PointElement,
   ChartOptions,
+  Tooltip,
 } from "chart.js";
 import "chartjs-adapter-date-fns";
+import annotationPlugin from "chartjs-plugin-annotation";
 import merge from "lodash.merge";
 import { styled } from "@mui/material";
 
@@ -18,10 +20,11 @@ Chart.register(
   LineController,
   LineElement,
   LinearScale,
-  // CategoryScale,
   TimeSeriesScale,
   PointElement,
-  Title
+  Title,
+  annotationPlugin,
+  Tooltip
 );
 
 const StyledChartWrapper = styled("div")(() => ({
@@ -35,9 +38,19 @@ export interface LineChartProps {
     label: string;
     data: { x: string; y: number }[];
     borderColor: string;
+    backgroundColor: string;
+    tension: number;
   }[];
   options?: ChartOptions<"line">;
 }
+
+export const defaultDataSet = {
+  label: "",
+  borderColor: "",
+  backgroundColor: "",
+  tension: 0.4,
+  data: [],
+};
 
 const LineChart = ({ chartTitle, datasets, options }: LineChartProps) => {
   const chartCanvas = createRef<HTMLCanvasElement>();
@@ -45,8 +58,6 @@ const LineChart = ({ chartTitle, datasets, options }: LineChartProps) => {
 
   useEffect(() => {
     if (chartCanvas.current) {
-      console.log("%c chartCanvas", "color: orange", chartCanvas);
-
       const data = {
         datasets,
       };
@@ -61,6 +72,10 @@ const LineChart = ({ chartTitle, datasets, options }: LineChartProps) => {
               title: {
                 display: Boolean(chartTitle),
                 text: chartTitle,
+              },
+              tooltip: {
+                mode: "index",
+                intersect: false,
               },
             },
             scales: {

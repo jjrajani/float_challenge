@@ -1,9 +1,9 @@
 import { VisitWithMeta } from "@/types/Visit";
 import { Grid2 as Grid } from "@mui/material";
 import BloodPressureChart from "./BloodPressureChart";
-import HeartRateChart from "./HeartRateChart";
-import PainLevelChart from "./PainLevelChart";
-import CollapsibleCard from "../CollapsibleCard";
+import HeartRateChart from "@/components/PatientDashboard/HeartRateChart";
+import PainLevelChart from "@/components/PatientDashboard/PainLevelChart";
+import CollapsibleCard from "@/components/CollapsibleCard";
 
 interface BioHistoryChartCardProps {
   visits: VisitWithMeta[] | undefined;

@@ -1,6 +1,6 @@
 import { Grid2 as Grid } from "@mui/material";
-import TitleValuePair from "../TitleValuePair";
-import CollapsibleCard from "../CollapsibleCard";
+import TitleValuePair from "@/components/TitleValuePair";
+import CollapsibleCard from "@/components/CollapsibleCard";
 import { Patient } from "@/types/Patient";
 import { getPatientAge } from "@/db/Patients";
 
@@ -9,7 +9,6 @@ interface PatientOverviewCardProps {
 }
 
 const PatientOverviewCard = ({ patient }: PatientOverviewCardProps) => {
-  console.log("%c patient", "color: orange", patient);
   return (
     <CollapsibleCard title="Patient Overview">
       {patient && (

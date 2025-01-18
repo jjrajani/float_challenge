@@ -8,8 +8,7 @@ import Image from "next/image";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import ContactPageIcon from "@mui/icons-material/ContactPage";
 import Link from "next/link";
-import FlexBox from "../FlexBox";
-// interface LayoutProps extends PropsWithChildren {}
+import FlexBox from "@/components/FlexBox";
 
 const Layout = ({ children }: PropsWithChildren) => {
   return (

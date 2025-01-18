@@ -1,10 +1,6 @@
-import { formatDateIntl } from "@/utils/date";
-import { Grid2 as Grid } from "@mui/material";
-import { getBioBloodPressure } from "@/db/PatientBioDatas";
-import TitleValuePair from "../TitleValuePair";
 import { VisitWithMeta } from "@/types/Visit";
-import CollapsibleCard from "../CollapsibleCard";
-import VisitDetails from "./VisitDetails";
+import CollapsibleCard from "@/components/CollapsibleCard";
+import VisitDetails from "@/components/PatientDashboard/VisitDetails";
 
 interface LastVisitCardProps {
   visit: VisitWithMeta;

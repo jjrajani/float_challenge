@@ -1,9 +1,9 @@
 "use client";
 import { createTheme } from "@mui/material/styles";
 
-const floatBlue = "rgb(29, 78, 216)";
-const floatBlackText = "rgb(2, 6, 23)";
-const secondaryColor = "rgb(220, 220, 220)";
+export const floatBlue = "rgb(29, 78, 216)";
+export const floatBlackText = "rgb(2, 6, 23)";
+export const secondaryColor = "rgb(220, 220, 220)";
 export const borderGrey = "rgba(0, 0, 0, 0.23)";
 
 const theme = createTheme({

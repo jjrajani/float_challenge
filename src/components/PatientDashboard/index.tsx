@@ -1,12 +1,21 @@
 import { usePatient } from "@/db/Patients";
 import { useMemo } from "react";
-import { Typography } from "@mui/material";
-import FlexBox from "../FlexBox";
+import { styled, Typography } from "@mui/material";
+import FlexBox from "@/components/FlexBox";
 import LastVisitCard from "./LastVisitCard";
 import BioHistoryChartCard from "./BioHistoryChartCard";
 import PatientOverviewCard from "./PatientOverviewCard";
 import PatientVisitHistoryCard from "./PatientVisitHistoryCard";
 import { borderGrey } from "@/theme";
+
+const StyledStickHeader = styled(Typography)(() => ({
+  position: "sticky",
+  top: "0",
+  zIndex: 1,
+  height: 36,
+  backgroundColor: "white",
+  borderBottom: `solid ${borderGrey} 1px`,
+}));
 
 interface PatientDashboardProps {
   patientId?: string;
@@ -22,19 +31,8 @@ const PatientDashboard = ({ patientId }: PatientDashboardProps) => {
       {!patientId && <div>Select a Patient</div>}
       {patientId && (
         <>
-          <Typography
-            variant="h3"
-            component="p"
-            sx={{
-              position: "sticky",
-              top: "0",
-              zIndex: 1,
-              height: 36,
-              backgroundColor: "white",
-              borderBottom: `solid ${borderGrey} 1px`,
-            }}>
-            {patient?.name}
-          </Typography>
+          <StyledStickHeader variant="h3">{patient?.name}</StyledStickHeader>
+
           <PatientOverviewCard patient={patient} />
           {lastVisit && <LastVisitCard visit={lastVisit} />}
 
