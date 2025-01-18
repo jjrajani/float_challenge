@@ -1,8 +1,8 @@
 [Project Demo](https://float-challenge-nvsucam6c-jjrajanis-projects.vercel.app/patients)
 
-[Portfolio](https://jjrajani.github.io/#/home)
-
 [Project Repo](https://github.com/jjrajani/float_challenge)
+
+[Portfolio](https://jjrajani.github.io/#/home)
 
 # ChatGPT uses
 
