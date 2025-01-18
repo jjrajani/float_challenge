@@ -1,4 +1,4 @@
-[Project Demo](https://float-challenge-nvsucam6c-jjrajanis-projects.vercel.app/patients)
+[Project Demo](https://float-challenge-eight.vercel.app/patients)
 
 [Project Repo](https://github.com/jjrajani/float_challenge)
 
@@ -17,7 +17,7 @@ On the right side I've built a dashboard of sorts that gives an overview of the 
 **Expanded Use Cases:**
 This UI could also potentially serve as a way to understand how specific medications impact the patient. We could add a filter to the top of the page to allow the user to select a medication then filter all the patient visit data to only show visits including that medication. Same could apply to duration of visit, location of visit, or even perhaps the administrating nurse. Anything that might give more insight into how the patient's environment, treatment plan, and physician impact their ability to heal.
 
-# ChatGPT uses
+# ChatGPT Uses
 
 - Understand what typical pharmacist workflows are.
 
