@@ -53,7 +53,7 @@ const BloodPressureChart = ({ visits = [] }: BloodPressureChartProps) => {
           order: 1,
           data:
             i % 25 === 0
-              ? [...accum[2].data, { x: visit.time_start, y: 100 }]
+              ? [...accum[2].data, { x: visit.time_start, y: 105 }]
               : accum[2].data,
         },
       ],
