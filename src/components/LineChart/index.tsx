@@ -10,6 +10,7 @@ import {
   PointElement,
   ChartOptions,
   Tooltip,
+  ScatterController,
 } from "chart.js";
 import "chartjs-adapter-date-fns";
 import annotationPlugin from "chartjs-plugin-annotation";
@@ -24,7 +25,8 @@ Chart.register(
   PointElement,
   Title,
   annotationPlugin,
-  Tooltip
+  Tooltip,
+  ScatterController
 );
 
 const StyledChartWrapper = styled("div")(() => ({
@@ -93,8 +95,6 @@ const LineChart = ({ chartTitle, datasets, options }: LineChartProps) => {
         } as ChartOptions,
         options || {}
       );
-
-      console.log("%c _options.tooltip", "color: orange", _options.tooltip);
 
       const chart = new Chart(chartCanvas.current, {
         type: "line",

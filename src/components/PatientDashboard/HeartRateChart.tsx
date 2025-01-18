@@ -20,16 +20,29 @@ const thresholdLabel = "Ideal Heart Rate";
 const thresholdBGColor = "rgba(173, 216, 230, 0.2)"; // Light red fill;
 const thresholdBorderColor = "rgb(173, 216, 230)"; // Red border for systolic range
 
+const medChangedLabel = "Meds Changed";
+const medChangedColor = "limegreen";
+
 const HeartRateChart = ({ visits = [] }: HeartRateChartProps) => {
   const datasets = useMemo(() => {
     return visits.reduce(
-      (accum, visit) => [
+      (accum, visit, i) => [
         {
           ...accum[0],
+          order: 2,
           data: [
             ...accum[0].data,
             { x: visit.time_start, y: visit.bio.heart_rate },
           ],
+        },
+        {
+          ...accum[1],
+          type: "scatter",
+          order: 1,
+          data:
+            i % 25 === 0
+              ? [...accum[1].data, { x: visit.time_start, y: 100 }]
+              : accum[1].data,
         },
       ],
       [
@@ -38,6 +51,14 @@ const HeartRateChart = ({ visits = [] }: HeartRateChartProps) => {
           label,
           borderColor,
           backgroundColor,
+        },
+        {
+          label: medChangedLabel,
+          borderColor: medChangedColor,
+          backgroundColor: medChangedColor,
+          tension: 0.4,
+          data: [],
+          radius: 4,
         },
       ] as LineChartProps["datasets"]
     );
@@ -80,6 +101,10 @@ const HeartRateChart = ({ visits = [] }: HeartRateChartProps) => {
           {
             label: thresholdLabel,
             color: thresholdBGColor,
+          },
+          {
+            label: medChangedLabel,
+            color: medChangedColor,
           },
         ]}
       />

@@ -22,12 +22,17 @@ const dBpBorderColor = "rgb(54, 162, 235)";
 const dBpBackgroundColor = "rgba(54, 162, 235, 0.2)";
 const dBThresholdBorderColor = "rgba(255, 159, 64, 0.3)";
 
+const medChangedLabel = "Meds Changed";
+const medChangedColor = "limegreen";
+
 const BloodPressureChart = ({ visits = [] }: BloodPressureChartProps) => {
   const datasets = useMemo(() => {
     return visits.reduce(
-      (accum, visit) => [
+      (accum, visit, i) => [
         {
           ...accum[0],
+          type: "line",
+          order: 2,
           data: [
             ...accum[0].data,
             { x: visit.time_start, y: visit.bio.systolic_bp },
@@ -35,10 +40,21 @@ const BloodPressureChart = ({ visits = [] }: BloodPressureChartProps) => {
         },
         {
           ...accum[1],
+          type: "line",
+          order: 3,
           data: [
             ...accum[1].data,
             { x: visit.time_start, y: visit.bio.diastolic_bp },
           ],
+        },
+        {
+          ...accum[2],
+          type: "scatter",
+          order: 1,
+          data:
+            i % 25 === 0
+              ? [...accum[2].data, { x: visit.time_start, y: 100 }]
+              : accum[2].data,
         },
       ],
       [
@@ -49,13 +65,20 @@ const BloodPressureChart = ({ visits = [] }: BloodPressureChartProps) => {
           tension: 0.4,
           data: [],
         },
-
         {
           label: dBpLabel,
           borderColor: dBpBorderColor,
           backgroundColor: dBpBackgroundColor,
           tension: 0.4,
           data: [],
+        },
+        {
+          label: medChangedLabel,
+          borderColor: medChangedColor,
+          backgroundColor: medChangedColor,
+          tension: 0.4,
+          data: [],
+          radius: 4,
         },
       ] as LineChartProps["datasets"]
     );
@@ -112,6 +135,10 @@ const BloodPressureChart = ({ visits = [] }: BloodPressureChartProps) => {
           {
             label: dBpThresholdLabel,
             color: dBThresholdBorderColor,
+          },
+          {
+            label: medChangedLabel,
+            color: medChangedColor,
           },
         ]}
       />

@@ -16,16 +16,29 @@ const label = "Pain Level";
 const borderColor = "rgb(255, 159, 64)"; // Orange line color
 const backgroundColor = "rgba(255, 159, 64, 0.2)"; // Light orange fill for the area under the line
 
+const medChangedLabel = "Meds Changed";
+const medChangedColor = "limegreen";
+
 const PainLevelChart = ({ visits = [] }: PainLevelChartProps) => {
   const datasets = useMemo(() => {
     return visits.reduce(
-      (accum, visit) => [
+      (accum, visit, i) => [
         {
           ...accum[0],
+          order: 2,
           data: [
             ...accum[0].data,
             { x: visit.time_start, y: visit.bio.pain_level },
           ],
+        },
+        {
+          ...accum[1],
+          type: "scatter",
+          order: 1,
+          data:
+            i % 25 === 0
+              ? [...accum[1].data, { x: visit.time_start, y: 5 }]
+              : accum[1].data,
         },
       ],
       [
@@ -34,6 +47,14 @@ const PainLevelChart = ({ visits = [] }: PainLevelChartProps) => {
           label,
           borderColor,
           backgroundColor,
+        },
+        {
+          label: medChangedLabel,
+          borderColor: medChangedColor,
+          backgroundColor: medChangedColor,
+          tension: 0.4,
+          data: [],
+          radius: 4,
         },
       ] as LineChartProps["datasets"]
     );
@@ -57,6 +78,10 @@ const PainLevelChart = ({ visits = [] }: PainLevelChartProps) => {
           {
             label: label,
             color: borderColor,
+          },
+          {
+            label: medChangedLabel,
+            color: medChangedColor,
           },
         ]}
       />
