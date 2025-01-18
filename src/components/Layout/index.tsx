@@ -5,7 +5,8 @@ import Toolbar from "@mui/material/Toolbar";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import Image from "next/image";
-
+import GitHubIcon from "@mui/icons-material/GitHub";
+import ContactPageIcon from "@mui/icons-material/ContactPage";
 import Link from "next/link";
 import FlexBox from "../FlexBox";
 // interface LayoutProps extends PropsWithChildren {}
@@ -42,13 +43,24 @@ const Layout = ({ children }: PropsWithChildren) => {
                       height={50}
                     />
                   </IconButton>
-                  <Button
-                    href="https://jjrajani.github.io/#/home"
-                    target="blank"
-                    variant="contained"
-                    color="secondary">
-                    Jenna Rajani
-                  </Button>
+                  <FlexBox>
+                    <Button
+                      href="https://jjrajani.github.io/#/home"
+                      target="blank"
+                      variant="contained"
+                      color="secondary"
+                      startIcon={<ContactPageIcon />}>
+                      Jenna Rajani
+                    </Button>
+                    <Button
+                      href="https://github.com/jjrajani/float_challenge"
+                      target="blank"
+                      variant="contained"
+                      color="secondary"
+                      startIcon={<GitHubIcon />}>
+                      Project Repo
+                    </Button>
+                  </FlexBox>
                 </FlexBox>
               </Toolbar>
             </AppBar>
