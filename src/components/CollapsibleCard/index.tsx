@@ -13,6 +13,7 @@ import FlexBox from "@/components/FlexBox";
 interface CollapsibleCardProps extends PropsWithChildren {
   defaultExpanded?: boolean;
   title: string;
+  maxExpandHeight?: string; // the max height of the Collapse component, not the Card.
 }
 
 const Padding = styled("div")(({ theme }) => ({
@@ -23,6 +24,7 @@ const CollapsibleCard = ({
   children,
   defaultExpanded = true,
   title,
+  maxExpandHeight,
 }: CollapsibleCardProps) => {
   const [expanded, setExpanded] = useState(defaultExpanded);
 
@@ -51,7 +53,12 @@ const CollapsibleCard = ({
             />
           </IconButton>
         </FlexBox>
-        <Collapse in={expanded}>
+        <Collapse
+          in={expanded}
+          sx={{
+            maxHeight: maxExpandHeight,
+            overflow: maxExpandHeight ? "scroll" : "",
+          }}>
           <Padding />
           {children}
         </Collapse>

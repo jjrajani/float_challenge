@@ -35,7 +35,7 @@ const PatientVisitHistoryCard = ({ patient }: PatientVisitHistoryCardProps) => {
   }, [patient]);
 
   return (
-    <CollapsibleCard title="Visit History">
+    <CollapsibleCard title="Visit History" maxExpandHeight={"550px"}>
       <Accordion panels={panels} initialExpanded={panels[0].id} />
     </CollapsibleCard>
   );
