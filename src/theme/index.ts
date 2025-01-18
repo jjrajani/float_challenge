@@ -1,11 +1,23 @@
 "use client";
 import { createTheme } from "@mui/material/styles";
 
+const floatBlue = "rgb(29, 78, 216)";
+const floatBlackText = "rgb(2, 6, 23)";
+const secondaryColor = "rgb(220, 220, 220)";
+
 const theme = createTheme({
+  palette: {
+    primary: {
+      main: floatBlue,
+    },
+    secondary: {
+      main: secondaryColor,
+    },
+  },
   typography: {
-    fontFamily: "var(--font-roboto)",
+    fontFamily: "var(--font-kanit)",
     allVariants: {
-      color: "rgb(2, 6, 23)",
+      color: floatBlackText,
     },
     button: {
       textTransform: "none",

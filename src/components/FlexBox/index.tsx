@@ -4,16 +4,23 @@ import { Box } from "@mui/material";
 interface FlexBoxProps extends PropsWithChildren {
   align?: "center" | "flex-end" | "baseline";
   direction?: "column" | "row";
-  gap?: string;
+  fullHeight?: boolean;
   fullWidth?: boolean;
+  maxHeight?: string;
+  gap?: string;
+  justify?: "space-between";
+  onClick?: (e: React.MouseEvent<HTMLElement>) => void;
 }
 
 const FlexBox = ({
   align,
   children,
   direction = "row",
-  gap = "16px",
+  fullHeight,
   fullWidth,
+  gap = "16px",
+  justify,
+  onClick,
 }: FlexBoxProps) => {
   return (
     <Box
@@ -22,8 +29,12 @@ const FlexBox = ({
         gap,
         flexDirection: direction,
         alignItems: align,
+        justifyContent: justify,
+        ...(fullHeight ? { height: "100%" } : {}),
         ...(fullWidth ? { width: "100%" } : {}),
-      }}>
+        ...(onClick ? { cursor: "pointer" } : {}),
+      }}
+      onClick={onClick}>
       {children}
     </Box>
   );

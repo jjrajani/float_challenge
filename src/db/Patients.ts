@@ -6,17 +6,26 @@ export const patients: Patient[] = [
   {
     name: "John Jackson",
     id: "PAT_1",
-    visits: ["VISIT_1", "VISIT_2"], // gets overridden in usePatient
+    dob: "1985-07-14",
+    gender: "Male",
+    visit_ids: ["VISIT_1", "VISIT_2"],
+    visits: [], // gets overridden in usePatient
   },
   {
     name: "John Thomas",
     id: "PAT_2",
-    visits: ["VISIT_3", "VISIT_4"], // gets overridden in usePatient
+    dob: "1985-07-14",
+    gender: "Male",
+    visit_ids: ["VISIT_3", "VISIT_4"],
+    visits: [], // gets overridden in usePatient
   },
   {
     name: "Chris Johnson",
     id: "PAT_3",
-    visits: ["VISIT_5", "VISIT_6"], // gets overridden in usePatient
+    dob: "1985-07-14",
+    gender: "Male",
+    visit_ids: ["VISIT_5", "VISIT_6"],
+    visits: [], // gets overridden in usePatient
   },
 ];
 
@@ -52,7 +61,7 @@ const getPatient = (id: string) => patients.find((p) => p.id === id);
 export const usePatient = (id?: string) => {
   const patient = useMemo(() => {
     if (!id) {
-      return null;
+      return undefined;
     }
     const _patient = getPatient(id);
     if (_patient) {
@@ -67,4 +76,23 @@ export const usePatient = (id?: string) => {
   return {
     patient,
   };
+};
+
+export const getPatientAge = (dob?: string): undefined | number => {
+  if (!dob) {
+    return;
+  }
+  const today = new Date();
+  const birthDate = new Date(dob);
+
+  let age = today.getFullYear() - birthDate.getFullYear();
+  const monthDiff = today.getMonth() - birthDate.getMonth();
+  const dayDiff = today.getDate() - birthDate.getDate();
+
+  // Adjust age if the current date is before the birthday this year
+  if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+    age--;
+  }
+
+  return age;
 };

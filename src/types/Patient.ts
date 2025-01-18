@@ -1,5 +1,10 @@
+import { VisitWithMeta } from "./Visit";
+
 export interface Patient {
   name: string;
+  dob: string;
   id: string;
-  visits: string[]; // ids of PatientVisit
+  gender: "Male" | "Female";
+  visit_ids: string[];
+  visits: VisitWithMeta[]; // ids of PatientVisit
 }

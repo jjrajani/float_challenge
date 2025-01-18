@@ -5,6 +5,12 @@ import FlexBox from "@/components/FlexBox";
 import { useMemo, useState } from "react";
 import PatientDashboard from "@/components/PatientDashboard";
 import PatientSelector from "@/components/PatientDashboard/PatientSelector";
+import { styled } from "@mui/material";
+
+const StyledDashboardWrapper = styled("div")(() => ({
+  maxHeight: "100%",
+  overflow: "scroll",
+}));
 
 const PatientsPage = () => {
   const { patients, onFilterChange } = usePatients();
@@ -30,9 +36,11 @@ const PatientsPage = () => {
   }, [activePatientId, patients]);
 
   return (
-    <FlexBox>
+    <FlexBox fullHeight>
       <PatientSelector listItems={listItems} onFilterChange={onFilterChange} />
-      <PatientDashboard patientId={activePatientId} />
+      <StyledDashboardWrapper>
+        <PatientDashboard patientId={activePatientId} />
+      </StyledDashboardWrapper>
     </FlexBox>
   );
 };

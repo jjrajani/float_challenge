@@ -1,11 +1,11 @@
 import { usePatient } from "@/db/Patients";
-import Accordion from "@/components/Accordion";
 import { useMemo } from "react";
-import VisitDetails from "./VisitDetails";
-import { formatDateIntl } from "@/utils/date";
 import { Typography } from "@mui/material";
 import FlexBox from "../FlexBox";
-import SymptomsStatusDot from "./SymptomsStatusDot";
+import LastVisitCard from "./LastVisitCard";
+import BioHistoryChartCard from "./BioHistoryChartCard";
+import PatientOverviewCard from "./PatientOverviewCard";
+import PatientVisitHistoryCard from "./PatientVisitHistoryCard";
 
 interface PatientDashboardProps {
   patientId?: string;
@@ -13,43 +13,33 @@ interface PatientDashboardProps {
 
 const PatientDashboard = ({ patientId }: PatientDashboardProps) => {
   const { patient } = usePatient(patientId);
-  const panels = useMemo(() => {
-    if (!patient) {
-      return [];
-    }
 
-    return patient.visits.map((v) => ({
-      id: v.id,
-      // Title of accordion
-      title: `${formatDateIntl(v.time_start)} | Nurse: ${v.nurse.name}`,
-      // Content of accordion
-      component: VisitDetails,
-      // Data prop for VisitDetails componnt
-      data: v,
-      // Right side of Accordion Header custom components
-      actions: (
-        <FlexBox align="center" gap={"4px"}>
-          <SymptomsStatusDot symptomsStatus={v.symptoms_status} />
-        </FlexBox>
-      ),
-    }));
-  }, [patient]);
+  const lastVisit = useMemo(() => patient?.visits.slice(-1)[0], [patient]);
 
   return (
-    <FlexBox direction="column" fullWidth>
+    <FlexBox direction="column" maxHeight="100%">
       {!patientId && <div>Select a Patient</div>}
       {patientId && (
         <>
-          <FlexBox gap={"8px"} align="flex-end">
-            <Typography variant="h4" component="p">
-              Patient:
-            </Typography>
-            <Typography variant="h3" component="p">
-              {patient?.name}
-            </Typography>
-          </FlexBox>
+          <Typography
+            variant="h3"
+            component="p"
+            sx={{
+              position: "sticky",
+              top: "0",
+              zIndex: 1,
+              height: 36,
+              backgroundColor: "white",
+              borderBottom: "solid grey 1px",
+            }}>
+            {patient?.name}
+          </Typography>
+          <PatientOverviewCard patient={patient} />
+          {lastVisit && <LastVisitCard visit={lastVisit} />}
 
-          <Accordion panels={panels} initialExpanded={panels[0].id} />
+          <BioHistoryChartCard visits={patient?.visits} />
+
+          <PatientVisitHistoryCard patient={patient} />
         </>
       )}
     </FlexBox>
