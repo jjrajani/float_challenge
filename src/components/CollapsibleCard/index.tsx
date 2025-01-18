@@ -44,7 +44,7 @@ const CollapsibleCard = ({
           justify="space-between"
           align="center"
           onClick={toggleExpanded}>
-          <Typography>{title}</Typography>
+          <Typography variant="h4">{title}</Typography>
           <IconButton aria-label="expand" onClick={toggleExpanded}>
             <ExpandLessIcon
               sx={{

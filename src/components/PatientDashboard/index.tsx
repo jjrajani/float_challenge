@@ -31,7 +31,7 @@ const PatientDashboard = ({ patientId }: PatientDashboardProps) => {
       {!patientId && <div>Select a Patient</div>}
       {patientId && (
         <>
-          <StyledStickHeader variant="h3">{patient?.name}</StyledStickHeader>
+          <StyledStickHeader variant="h2">{patient?.name}</StyledStickHeader>
 
           <PatientOverviewCard patient={patient} />
           {lastVisit && <LastVisitCard visit={lastVisit} />}

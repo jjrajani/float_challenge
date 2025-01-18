@@ -32,7 +32,7 @@ const theme = createTheme({
       fontWeight: 400,
     },
     h4: {
-      fontSize: 16,
+      fontSize: 18,
       fontWeight: 400,
     },
   },
