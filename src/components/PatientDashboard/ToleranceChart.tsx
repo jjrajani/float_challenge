@@ -3,23 +3,19 @@ import { defaultDataSet, LineChartProps } from "@/components/LineChart";
 import { useMemo } from "react";
 import ChartWithLegend from "../ChartWithLegendWrapper";
 
-interface HeartRateChartProps {
+interface ToleranceChartProps {
   visits: VisitWithMeta[] | undefined;
 }
 
-const chartTitle = "Heart Rate";
-const label = "Heart Rate";
-const borderColor = "rgb(153, 102, 255)";
-const backgroundColor = "rgba(153, 102, 255, 0.2)";
-
-const thresholdLabel = "Ideal Heart Rate";
-const thresholdBGColor = "rgba(173, 216, 230, 0.2)"; // Light red fill;
-const thresholdBorderColor = "rgb(173, 216, 230)"; // Red border for systolic range
+const chartTitle = "Tolerance";
+const label = "Tolerance";
+const borderColor = "rgb(255, 223, 102)"; // Orange line color
+const backgroundColor = "rgba(255, 223, 102, 0.2)"; // Light orange fill for the area under the line
 
 const medChangedLabel = "Meds Changed";
 const medChangedColor = "limegreen";
 
-const HeartRateChart = ({ visits = [] }: HeartRateChartProps) => {
+const ToleranceChart = ({ visits = [] }: ToleranceChartProps) => {
   const datasets = useMemo(() => {
     return visits.reduce(
       (accum, visit, i) => [
@@ -28,7 +24,7 @@ const HeartRateChart = ({ visits = [] }: HeartRateChartProps) => {
           order: 2,
           data: [
             ...accum[0].data,
-            { x: visit.time_start, y: visit.bio.heart_rate },
+            { x: visit.time_start, y: parseInt(visit.symptoms_status, 10) },
           ],
         },
         {
@@ -37,7 +33,7 @@ const HeartRateChart = ({ visits = [] }: HeartRateChartProps) => {
           order: 1,
           data:
             i % 25 === 0
-              ? [...accum[1].data, { x: visit.time_start, y: 100 }]
+              ? [...accum[1].data, { x: visit.time_start, y: 0 }]
               : accum[1].data,
         },
       ],
@@ -66,23 +62,24 @@ const HeartRateChart = ({ visits = [] }: HeartRateChartProps) => {
       options={{
         scales: {
           y: {
-            min: 50,
-            max: 150,
-          },
-        },
-        plugins: {
-          annotation: {
-            annotations: [
-              {
-                type: "box",
-                yMin: 90, // Bottom threshold for systolic
-                yMax: 120, // Upper threshold for systolic
-                backgroundColor: thresholdBGColor,
-                borderColor: thresholdBorderColor,
-                borderWidth: 1,
-                drawTime: "beforeDatasetsDraw", // This ensures the box is drawn behind the lines
+            min: -1,
+            max: 1,
+
+            ticks: {
+              maxTicksLimit: 3,
+
+              callback: (tickValue) => {
+                if (tickValue === -1) {
+                  return "Declined";
+                }
+                if (tickValue === 0) {
+                  return "No Change";
+                }
+                if (tickValue === 1) {
+                  return "Improved";
+                }
               },
-            ],
+            },
           },
         },
       }}
@@ -90,10 +87,6 @@ const HeartRateChart = ({ visits = [] }: HeartRateChartProps) => {
         {
           label: label,
           color: borderColor,
-        },
-        {
-          label: thresholdLabel,
-          color: thresholdBGColor,
         },
         {
           label: medChangedLabel,
@@ -104,4 +97,4 @@ const HeartRateChart = ({ visits = [] }: HeartRateChartProps) => {
   );
 };
 
-export default HeartRateChart;
+export default ToleranceChart;

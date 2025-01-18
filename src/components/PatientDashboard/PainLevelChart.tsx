@@ -1,11 +1,7 @@
 import { VisitWithMeta } from "@/types/Visit";
-import LineChart, {
-  defaultDataSet,
-  LineChartProps,
-} from "@/components/LineChart";
+import { defaultDataSet, LineChartProps } from "@/components/LineChart";
 import { useMemo } from "react";
-import ChartLegend from "@/components/ChartLegend";
-import FlexBox from "@/components/FlexBox";
+import ChartWithLegend from "../ChartWithLegendWrapper";
 
 interface PainLevelChartProps {
   visits: VisitWithMeta[] | undefined;
@@ -60,8 +56,8 @@ const PainLevelChart = ({ visits = [] }: PainLevelChartProps) => {
     );
   }, [visits]);
   return (
-    <FlexBox direction="column" gap="4px">
-      <LineChart
+    <>
+      <ChartWithLegend
         datasets={datasets}
         chartTitle={chartTitle}
         options={{
@@ -72,9 +68,7 @@ const PainLevelChart = ({ visits = [] }: PainLevelChartProps) => {
             },
           },
         }}
-      />
-      <ChartLegend
-        items={[
+        legendItems={[
           {
             label: label,
             color: borderColor,
@@ -85,7 +79,7 @@ const PainLevelChart = ({ visits = [] }: PainLevelChartProps) => {
           },
         ]}
       />
-    </FlexBox>
+    </>
   );
 };
 

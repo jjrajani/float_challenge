@@ -31,7 +31,7 @@ const VisitDetails = ({ data }: VisitDetailsProps) => {
         <Grid size={2}>
           <TitleValuePair title="Time" value={formatTime(data.time_start)} />
         </Grid>
-        <Grid size={2}>
+        <Grid size={3}>
           <TitleValuePair title="Location" value={data.location} />
         </Grid>
         <Grid size={2}>
@@ -44,7 +44,7 @@ const VisitDetails = ({ data }: VisitDetailsProps) => {
           <Grid container spacing={2}>
             <Grid size={2}>
               <TitleValuePair
-                title="Medication"
+                title="Medications"
                 value={`${data.medication.name} | ${data.medication.access_type}`}
               />
             </Grid>

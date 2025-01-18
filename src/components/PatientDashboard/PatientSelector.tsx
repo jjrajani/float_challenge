@@ -12,7 +12,7 @@ const PatientSelector = ({
   onFilterChange,
 }: PatientSelectorProps) => {
   return (
-    <Stack spacing={2}>
+    <Stack spacing={2} sx={{ minWidth: 250 }}>
       <Stack spacing={1}>
         <Typography variant="h2">Patients</Typography>
         <TextField

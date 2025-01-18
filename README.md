@@ -31,6 +31,8 @@ This UI could also potentially serve as a way to understand how specific nurses 
 
 - Help pick colors for charts
 
+- Generate `generateRandomAddress` func (`src/utils/address.ts`)
+
 # Libraries
 
 - Next.js
@@ -70,6 +72,10 @@ Updated `next.config.js` to redirect from `/` to `/patients` to mock routing.
 - Have a "Meds Changed" alert at the top of the screen, in the visit history section, in the last visit section.
 
 - The "Meds Changed" tootlip section should display what med used to be taken and what med is now being taken.
+
+- Ability for a patient to be taking more than one medicine.
+
+- Allow pharmacist/patient admin to choose which charts to show in the Bio History section. So they can show the most relevant data for that patient's treatment plan.
 
 ---
 

@@ -1,8 +1,7 @@
 import { VisitWithMeta } from "@/types/Visit";
-import LineChart, { LineChartProps } from "@/components/LineChart";
-import ChartLegend from "@/components/ChartLegend";
+import { LineChartProps, defaultDataSet } from "@/components/LineChart";
 import { useMemo } from "react";
-import FlexBox from "@/components/FlexBox";
+import ChartWithLegend from "../ChartWithLegendWrapper";
 
 interface BloodPressureChartProps {
   visits: VisitWithMeta[] | undefined;
@@ -59,6 +58,7 @@ const BloodPressureChart = ({ visits = [] }: BloodPressureChartProps) => {
       ],
       [
         {
+          ...defaultDataSet,
           label: sBpLabel,
           borderColor: sBpBorderColor,
           backgroundColor: sBpBackgroundColor,
@@ -66,6 +66,7 @@ const BloodPressureChart = ({ visits = [] }: BloodPressureChartProps) => {
           data: [],
         },
         {
+          ...defaultDataSet,
           label: dBpLabel,
           borderColor: dBpBorderColor,
           backgroundColor: dBpBackgroundColor,
@@ -85,64 +86,59 @@ const BloodPressureChart = ({ visits = [] }: BloodPressureChartProps) => {
   }, [visits]);
 
   return (
-    <FlexBox direction="column" gap="4px">
-      <LineChart
-        datasets={datasets}
-        chartTitle={chartTitle}
-        options={{
-          plugins: {
-            tooltip: {
-              mode: "index",
-              intersect: false,
-            },
+    <ChartWithLegend
+      datasets={datasets}
+      chartTitle={chartTitle}
+      options={{
+        plugins: {
+          tooltip: {
+            mode: "index",
+            intersect: false,
+          },
 
-            annotation: {
-              annotations: [
-                {
-                  type: "line",
-                  scaleID: "y",
-                  value: 120, // Threshold for systolic BP (e.g., normal max)
-                  // borderColor: "rgba(255, 99, 132, 0.5)", // Light red color for systolic threshold
-                  borderColor: sBThresholdBorderColor,
-                  borderWidth: 2,
-                },
-                {
-                  type: "line",
-                  scaleID: "y",
-                  value: 80, // Threshold for diastolic BP (e.g., normal min)
-                  borderColor: dBThresholdBorderColor, // "rgba(54, 162, 235, 0.5)", // Light blue color for diastolic threshold
-                  borderWidth: 2,
-                },
-              ],
-            },
+          annotation: {
+            annotations: [
+              {
+                type: "line",
+                scaleID: "y",
+                value: 120, // Threshold for systolic BP (e.g., normal max)
+                borderColor: sBThresholdBorderColor,
+                borderWidth: 2,
+              },
+              {
+                type: "line",
+                scaleID: "y",
+                value: 80, // Threshold for diastolic BP (e.g., normal min)
+                borderColor: dBThresholdBorderColor, // "rgba(54, 162, 235, 0.5)", // Light blue color for diastolic threshold
+                borderWidth: 2,
+              },
+            ],
           },
-        }}
-      />
-      <ChartLegend
-        items={[
-          {
-            label: sBpLabel,
-            color: sBpBorderColor,
-          },
-          {
-            label: sBpThresholdLabel,
-            color: sBThresholdBorderColor,
-          },
-          {
-            label: dBpLabel,
-            color: dBpBorderColor,
-          },
-          {
-            label: dBpThresholdLabel,
-            color: dBThresholdBorderColor,
-          },
-          {
-            label: medChangedLabel,
-            color: medChangedColor,
-          },
-        ]}
-      />
-    </FlexBox>
+        },
+      }}
+      legendItems={[
+        {
+          label: sBpLabel,
+          color: sBpBorderColor,
+        },
+        {
+          label: sBpThresholdLabel,
+          color: sBThresholdBorderColor,
+        },
+        {
+          label: dBpLabel,
+          color: dBpBorderColor,
+        },
+        {
+          label: dBpThresholdLabel,
+          color: dBThresholdBorderColor,
+        },
+        {
+          label: medChangedLabel,
+          color: medChangedColor,
+        },
+      ]}
+    />
   );
 };
 

@@ -30,7 +30,7 @@ Chart.register(
 );
 
 const StyledChartWrapper = styled("div")(() => ({
-  height: 300,
+  height: 250,
   width: "100%",
 }));
 
@@ -52,6 +52,8 @@ export const defaultDataSet = {
   backgroundColor: "",
   tension: 0.4,
   data: [],
+  borderWidth: 2,
+  pointRadius: 0,
 };
 
 const LineChart = ({ chartTitle, datasets, options }: LineChartProps) => {
@@ -89,6 +91,9 @@ const LineChart = ({ chartTitle, datasets, options }: LineChartProps) => {
                   month: "MMM yyyy", // Example: "Jan 2023"
                 },
                 tooltipFormat: "PP", // Example: "Jan 1, 2023"
+              },
+              grid: {
+                drawOnChartArea: false,
               },
             },
           },

@@ -17,7 +17,7 @@ const PatientVisitHistoryCard = ({ patient }: PatientVisitHistoryCardProps) => {
       return [];
     }
 
-    return patient.visits.map((v) => ({
+    return patient.visits.reverse().map((v) => ({
       id: v.id,
       // Title of accordion
       title: `${formatDateIntl(v.time_start)} | Nurse: ${v.nurse.name}`,

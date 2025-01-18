@@ -12,7 +12,7 @@ const StyledStickHeader = styled(Typography)(() => ({
   position: "sticky",
   top: "0",
   zIndex: 1,
-  height: 36,
+  height: 38,
   backgroundColor: "white",
   borderBottom: `solid ${borderGrey} 1px`,
 }));
@@ -34,9 +34,10 @@ const PatientDashboard = ({ patientId }: PatientDashboardProps) => {
           <StyledStickHeader variant="h2">{patient?.name}</StyledStickHeader>
 
           <PatientOverviewCard patient={patient} />
-          {lastVisit && <LastVisitCard visit={lastVisit} />}
 
           <BioHistoryChartCard visits={patient?.visits} />
+
+          {lastVisit && <LastVisitCard visit={lastVisit} />}
 
           <PatientVisitHistoryCard patient={patient} />
         </>

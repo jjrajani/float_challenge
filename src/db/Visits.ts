@@ -3,6 +3,7 @@ import { getNurse, nurseIds } from "@/db/Nurses";
 import { Nurse } from "@/types/Nurse";
 import { Medication } from "@/types/Medication";
 import { getMedication, medicationIds } from "@/db/Medications";
+import { generateRandomAddress } from "@/utils/address";
 
 const getRandomItem = (arr: string[]): string => {
   return arr[Math.floor(Math.random() * arr.length)];
@@ -58,7 +59,7 @@ export const generateVisits = (
       id: visitId,
       time_start: timeStart.toISOString(),
       time_end: timeEnd.toISOString(),
-      location: `Clinic ${String.fromCharCode(65 + (i % 26))}`, // Cycles through A-Z
+      location: generateRandomAddress(),
       duration: formatDuration(randomDurationMs),
       patient_id: patientId,
       nurse_id: getRandomItem(nurseIds),

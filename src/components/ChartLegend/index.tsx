@@ -1,7 +1,7 @@
 import FlexBox from "@/components/FlexBox";
 import { Grid2 as Grid, styled, Typography } from "@mui/material";
 
-interface ChartLegendProps {
+export interface ChartLegendProps {
   items: {
     label: string;
     color: string;
